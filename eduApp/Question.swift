@@ -16,8 +16,8 @@ struct Question{
         number1 * number2
     }
     
-    func string() -> String {
-        "Whats \(number1) times \(number2)?"
+    func questionView() -> QuestionView {
+        QuestionView(firstNumber: number1, secondNumber: number2)
     }
     
     func possibleAnswers() -> [Int]{
