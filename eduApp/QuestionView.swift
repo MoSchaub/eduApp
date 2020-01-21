@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct QuestionView: View {
-    let firstNumber: Int
-    let secondNumber: Int
+    var firstNumber: Int
+    var secondNumber: Int
     
     var body: some View {
         HStack {

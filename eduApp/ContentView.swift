@@ -17,69 +17,77 @@ struct ContentView: View {
     
     @State private var numberOfQuestions = 5
     @State private var questions = [Question]()
+    @State private var answers = [Int]()
     @State private var currentQuestion = 0
     @State private var title = "Multiplications"
+    @State private var score = 0
+    @State private var questionView = QuestionView(firstNumber: 0, secondNumber: 0 )
+    
     
     var body: some View {
         NavigationView {
             Group {
-                if !active{
-                    VStack{
+                ZStack{
+                    Color.init(.secondarySystemBackground)
+                    .edgesIgnoringSafeArea(.all)
+                    if !active{
+                        SettingsView(active: $active, lowerBoundary: $lowerBoundary, upperBoundary: $upperBoundary, numberOfQuestions: $numberOfQuestions, questions: $questions, answers: $answers, currentQuestion: $currentQuestion, title: $title,questionView: $questionView)
                         
-                        BoundarySelector(lowerBoundary: $lowerBoundary, upperBoundary: $upperBoundary)
-                        
-                        QuestionSelector(numberOfQuestions: $numberOfQuestions, lowerBoundary: $lowerBoundary, upperBoundary: $upperBoundary)
-                        
-                        
-                        Button(action: {
-                            self.startGame()
-                        }, label: {
-                            Text("Start")
-                                .frame(width: 150, height: 40)
-                                .background(Color.blue)
-                                .foregroundColor(.white)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                        })
-                        
-                        Spacer()
-                        
-                    }
-                    
-                    
-                } else {
-                    if currentQuestion < (numberOfQuestions-1){
-                        questions[0].questionView()
                         
                     } else {
-                        Text("Score")
+                        VStack{
+                            if currentQuestion < (numberOfQuestions-1){
+                                
+                                QuestionsView(numberOfQuestions: $numberOfQuestions, questions: $questions, currentQuestion: $currentQuestion, title: $title, score: $score,answers: $answers,questionView: $questionView)
+                                
+                            } else {
+                                VStack{
+                                    Spacer()
+                                    Text("\(score+1)/\(numberOfQuestions)")
+                                        .font(Font.system(size: 80.0, weight: .black))
+                                        .onAppear {
+                                            self.title = "Final score"
+                                    }
+                                    Spacer()
+                                }
+                            }
+                            Spacer()
+                            
+                            if currentQuestion < (numberOfQuestions-1){
+                                Text("Score: \(self.score)")
+                                .font(.title)
+                                .fontWeight(.black)
+                                .foregroundColor(.primary)
+                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 60)
+                                .background(Color.green)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .shadow(radius: 5)
+                                .padding(.horizontal, 40)
+                            }
+                            
+                            Button(action: {
+                                self.restart()
+                            }) {
+                                Text("Back to Settings")
+                                    .foregroundColor(.green)
+                                .padding()
+                            }
+                        }
                     }
                 }
-                
             }
             .navigationBarTitle(title)
             .font(.headline)
         }
     }
-    func startGame(){
-        self.questions = generateQuestions()
-        self.active = true
-        title = "Question \(self.currentQuestion + 1) of \(self.numberOfQuestions)"
-    }
     
-    func generateQuestions() -> [Question]{
-        var arr = [Question]()
-        for i1 in lowerBoundary ... upperBoundary  {
-            for i2 in 1 ... 10  {
-                arr.append(Question(number1: i1, number2: i2))
-            }
-        }
-        arr.shuffle()
-        while arr.count != numberOfQuestions {
-            arr.removeLast()
-        }
-        return arr
-    }
 
+    func restart() {
+        currentQuestion = 0
+        title = "Multiplications"
+        score = 0
+        active = false
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -88,69 +96,5 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-struct QuestionSelector: View {
-    @Binding var numberOfQuestions : Int
-    @Binding var lowerBoundary : Int
-    @Binding var upperBoundary : Int
-    
-    var body: some View {
-        VStack {
-            Text("How many Questions?")
-            
-            Picker("",selection: $numberOfQuestions){
-                Text("All").tag(self.numberOfAllQuestions())
-                Text("5").tag(5)
-                Text("10").tag(10)
-                if self.numberOfAllQuestions() >= 20{
-                    Text("20").tag(20)
-                }
-            }
-            .labelsHidden()
-            .pickerStyle(SegmentedPickerStyle())
-        }.card()
-    }
-    
-    func numberOfAllQuestions() -> Int{
-        (upperBoundary - lowerBoundary + 1) * 10
-    }
-    
-}
 
-struct BoundarySelector: View {
-    
-    @Binding var lowerBoundary : Int
-    @Binding var upperBoundary : Int
 
-    var body: some View {
-        VStack {
-            Text("Number(s) to practice?")
-                .fontWeight(.bold)
-                .headline()
-                .padding(.top, 20)
-            
-            VStack {
-                HStack {
-                    Text("From:")
-                        .font(.caption)
-                    
-                    Stepper(value: $lowerBoundary, in: 1...upperBoundary) {
-                        Text("\(lowerBoundary)")
-                    }
-                    
-                }.padding(.horizontal, 20)
-                
-                HStack {
-                    Text("To:")
-                        .font(.caption)
-                    
-                    Stepper(value: $upperBoundary, in: lowerBoundary...12) {
-                        Text("\(upperBoundary)")
-                    }
-                    
-                }
-                .padding(.horizontal, 20)
-                
-            }.padding(.horizontal, 40)
-        }.card()
-    }
-}

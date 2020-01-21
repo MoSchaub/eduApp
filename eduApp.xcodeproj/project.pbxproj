@@ -14,6 +14,9 @@
 		CD02C21323CF7409006BB320 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD02C21223CF7409006BB320 /* Preview Assets.xcassets */; };
 		CD02C21623CF7409006BB320 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD02C21423CF7409006BB320 /* LaunchScreen.storyboard */; };
 		CD1F42EF23D4F4DE003A45D6 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1F42EE23D4F4DE003A45D6 /* QuestionView.swift */; };
+		CD6BF77423D623D6000F9AA7 /* QuestionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6BF77323D623D6000F9AA7 /* QuestionSelector.swift */; };
+		CD6BF77623D62437000F9AA7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6BF77523D62437000F9AA7 /* SettingsView.swift */; };
+		CD6BF77823D624D0000F9AA7 /* QuestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6BF77723D624D0000F9AA7 /* QuestionsView.swift */; };
 		CD836CE423D4A37F00EEC5B3 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD836CE323D4A37F00EEC5B3 /* Question.swift */; };
 		CDE1C2D023D4B26C00948396 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE1C2CF23D4B26C00948396 /* Modifiers.swift */; };
 		CDE1C2D223D4B9B400948396 /* BoundarySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE1C2D123D4B9B400948396 /* BoundarySelector.swift */; };
@@ -29,6 +32,9 @@
 		CD02C21523CF7409006BB320 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD02C21723CF7409006BB320 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD1F42EE23D4F4DE003A45D6 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
+		CD6BF77323D623D6000F9AA7 /* QuestionSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSelector.swift; sourceTree = "<group>"; };
+		CD6BF77523D62437000F9AA7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		CD6BF77723D624D0000F9AA7 /* QuestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsView.swift; sourceTree = "<group>"; };
 		CD836CE323D4A37F00EEC5B3 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		CDE1C2CF23D4B26C00948396 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		CDE1C2D123D4B9B400948396 /* BoundarySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundarySelector.swift; sourceTree = "<group>"; };
@@ -67,6 +73,9 @@
 				CD02C20923CF7406006BB320 /* AppDelegate.swift */,
 				CD02C20B23CF7406006BB320 /* SceneDelegate.swift */,
 				CD02C20D23CF7406006BB320 /* ContentView.swift */,
+				CD6BF77723D624D0000F9AA7 /* QuestionsView.swift */,
+				CD6BF77523D62437000F9AA7 /* SettingsView.swift */,
+				CD6BF77323D623D6000F9AA7 /* QuestionSelector.swift */,
 				CDE1C2D123D4B9B400948396 /* BoundarySelector.swift */,
 				CDE1C2CF23D4B26C00948396 /* Modifiers.swift */,
 				CD836CE323D4A37F00EEC5B3 /* Question.swift */,
@@ -160,10 +169,13 @@
 			files = (
 				CDE1C2D223D4B9B400948396 /* BoundarySelector.swift in Sources */,
 				CD02C20A23CF7406006BB320 /* AppDelegate.swift in Sources */,
+				CD6BF77423D623D6000F9AA7 /* QuestionSelector.swift in Sources */,
+				CD6BF77623D62437000F9AA7 /* SettingsView.swift in Sources */,
 				CD836CE423D4A37F00EEC5B3 /* Question.swift in Sources */,
 				CD1F42EF23D4F4DE003A45D6 /* QuestionView.swift in Sources */,
 				CD02C20C23CF7406006BB320 /* SceneDelegate.swift in Sources */,
 				CD02C20E23CF7406006BB320 /* ContentView.swift in Sources */,
+				CD6BF77823D624D0000F9AA7 /* QuestionsView.swift in Sources */,
 				CDE1C2D023D4B26C00948396 /* Modifiers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
